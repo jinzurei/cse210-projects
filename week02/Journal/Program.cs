@@ -1,3 +1,10 @@
+// This Journal program includes several enhancements beyond the base requirements:
+// 1. Mood Rating System: Users rate their mood (1-10) when making an entry.
+// 2. Auto-Load: The program automatically loads previous journal entries on startup.
+// 3. Auto-Save: Entries are automatically saved to cacheJournal.txt after creation.
+// 4. Input Validation: Ensures mood ratings are between 1-10, preventing errors.
+// These features improve usability and allow users to track their emotional well-being.
+
 using System;
 
 class Program
@@ -9,11 +16,10 @@ class Program
 
         string cacheFile = "cacheJournal.txt";
 
-        // Automatically load entries from cache at program start (if exists)
         if (System.IO.File.Exists(cacheFile))
         {
             journal.LoadFromFile(cacheFile);
-            Console.WriteLine("Previous journal entries loaded from cache.\n");
+            Console.WriteLine("Previous journal entries loaded from cache.\n"); 
         }
 
         bool running = true;
@@ -38,12 +44,22 @@ class Program
                     entry._date = DateTime.Now.ToShortDateString();
                     entry._promptText = promptGenerator.GetRandomPrompt();
                     Console.WriteLine($"Prompt: {entry._promptText}");
+
+                    Console.Write("On a scale of 1 to 10, how are you feeling today? ");
+                    while (true)
+                    {
+                        if (int.TryParse(Console.ReadLine(), out int mood) && mood >= 1 && mood <= 10)
+                        {
+                            entry._moodRating = mood;
+                            break;
+                        }
+                        Console.Write("Invalid input. Please enter a number between 1 and 10: ");
+                    }
+
                     Console.Write("Your response: ");
                     entry._entryText = Console.ReadLine();
 
                     journal.AddEntry(entry);
-
-                    // Automatically save the new entry to cache
                     journal.SaveToFile(cacheFile);
                     Console.WriteLine("Entry added and auto-saved to cache.\n");
                     break;
