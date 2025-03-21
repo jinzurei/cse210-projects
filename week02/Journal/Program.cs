@@ -4,6 +4,7 @@
 // 3. Auto-Save: Entries are automatically saved to cacheJournal.txt after creation.
 // 4. Input Validation: Ensures mood ratings are between 1-10, preventing errors.
 // These features improve usability and allow users to track their emotional well-being.
+// this is a test note I am adding to confirm if it will now reflect the right account when I push changes
 
 using System;
 
