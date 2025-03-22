@@ -1,3 +1,23 @@
+// =============================================
+// ENHANCEMENTS BEYOND CORE REQUIREMENTS:
+// =============================================
+//
+// 1. Interactive Menu System:
+//    - Provided clear user choices:
+//      (a) Hide more words
+//      (b) Reset scripture
+//      (c) Quit program
+//
+// 2. Scripture Reset Feature:
+//    - Allows users to reset scripture text and start over without restarting the entire application.
+//
+// 3. Enhanced Visual Interface:
+//    - Included emojis and structured prompts to improve user experience and clarity.
+//
+// 4. Multiple Words Hidden per Interaction:
+//    - Hides two words per interaction rather than just one, adding an increased challenge and engagement.
+//
+
 using System;
 
 class Program
